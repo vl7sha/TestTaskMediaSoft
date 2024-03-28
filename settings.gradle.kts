@@ -1,1 +1,1 @@
-rootProject.name = "TestMediaSoftAcademia"
+rootProject.name = "TestTaskMediaSoft"
