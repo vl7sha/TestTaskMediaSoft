@@ -3,8 +3,8 @@ spring:
     name: TestTaskMediaSoft
 
   config:
-    activate:
-      on-profile: dev-postgresql
+    profiles:
+      active: "dev-postgresql"
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -25,8 +25,8 @@ spring:
     name: TestTaskMediaSoft
 
   config:
-    activate:
-      on-profile: dev-h2
+    profiles:
+      active: "dev-h2"
 
   datasource:
       url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:Goods}
