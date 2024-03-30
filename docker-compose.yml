@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 services:
   database:
@@ -17,6 +17,27 @@ services:
       - POSTGRES_PASSWORD=1234
     volumes:
       - postgres:/var/lib/postgresql/data
+    networks:
+      test-task:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/Goods
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=1234
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    networks:
+      test-task:
+
+networks:
+  test-task:
+    name: test-task
 
 
 volumes:

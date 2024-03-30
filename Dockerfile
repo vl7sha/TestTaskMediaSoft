@@ -6,7 +6,7 @@ COPY src ./src
 COPY build.gradle.kts ./build.gradle.kts
 COPY settings.gradle.kts ./settings.gradle.kts
 
-RUN gradle clean bootJar
+RUN gradle clean :bootJar
 
 FROM openjdk:17
 
@@ -19,4 +19,4 @@ COPY --from=build /workspace/build/libs/*SNAPSHOT.jar ./application.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "application.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=dev-postgresql", "-jar", "application.jar"]
